@@ -1,0 +1,75 @@
+{
+  "entities": {
+    "titulado_survey": {
+      "title": "TituladoSurvey",
+      "description": "Encuesta completada por graduados y titulados de Ingenieria de Sistemas",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "nombre": { "type": "string" },
+        "gestionGraduacion": { "type": "string" },
+        "modalidadGraduacion": { "type": "string" },
+        "areaTrabajo": { "type": "string" },
+        "tiempoInsercion": { "type": "string" },
+        "satisfaccionFormacion": { "type": "string" },
+        "nivelSalarial": { "type": "string" },
+        "competenciasCriticas": { "type": "string" },
+        "aspectosMejora": { "type": "string" },
+        "origen": { "type": "string" }
+      },
+      "required": ["timestamp", "areaTrabajo"]
+    },
+    "empleador_survey": {
+      "title": "EmpleadorSurvey",
+      "description": "Encuesta completada por empresas y empleadores del sector tecnologico",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "empresa": { "type": "string" },
+        "rubro": { "type": "string" },
+        "desempenoGlobal": { "type": "string" },
+        "areaMayorDemanda": { "type": "string" },
+        "habilidadesBlandas": { "type": "string" },
+        "dominioIngles": { "type": "string" },
+        "predisposicionContratar": { "type": "string" },
+        "tecnologiasEmergentes": { "type": "string" },
+        "sugerenciasPlan": { "type": "string" },
+        "origen": { "type": "string" }
+      },
+      "required": ["timestamp", "empresa"]
+    },
+    "simulation_record": {
+      "title": "SimulationRecord",
+      "description": "Registro de simulacion de ajuste curricular y mercado",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "nombre": { "type": "string" },
+        "descripcion": { "type": "string" },
+        "tipo": { "type": "string" },
+        "parametros": { "type": "string" },
+        "impactoInsercion": { "type": "number" },
+        "impactoSalarios": { "type": "number" },
+        "impactoSatisfaccion": { "type": "number" }
+      },
+      "required": ["timestamp", "nombre"]
+    }
+  },
+  "firestore": {
+    "/titulados/{id}": {
+      "schema": "titulado_survey",
+      "description": "Coleccion de respuestas de encuestas de graduados"
+    },
+    "/empleadores/{id}": {
+      "schema": "empleador_survey",
+      "description": "Coleccion de respuestas de encuestas de empleadores"
+    },
+    "/simulaciones/{id}": {
+      "schema": "simulation_record",
+      "description": "Coleccion de registros de simulaciones"
+    }
+  }
+}
